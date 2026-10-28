@@ -1,0 +1,188 @@
+/* ═══════════════════════════════════════════════════════════════
+   App.css — ScamShield AI Layout Shell
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── App shell ─────────────────────────────────────────────── */
+.app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-base);
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* Subtle background texture */
+  background:
+    radial-gradient(ellipse 80% 60% at 60% -20%, rgba(14,165,233,0.04) 0%, transparent 60%),
+    var(--bg-base);
+}
+
+/* ── Mobile sidebar overlay ────────────────────────────────── */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: var(--z-overlay);
+  backdrop-filter: blur(2px);
+}
+
+/* ── Mobile top bar ────────────────────────────────────────── */
+.mobile-header {
+  display: none;
+  align-items: center;
+  gap: 14px;
+  padding: 0 20px;
+  height: 56px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  flex-shrink: 0;
+}
+
+.mobile-header-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1;
+}
+
+.mobile-header-logo .logo-icon {
+  width: 30px; height: 30px;
+  background: var(--teal-dim);
+  border: 1px solid var(--teal-border);
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--teal);
+}
+
+.mobile-header-logo .logo-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+.mobile-header-logo .logo-text em {
+  font-style: normal;
+  color: var(--teal);
+}
+
+.hamburger {
+  width: 36px; height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: var(--r-sm);
+  color: var(--text-secondary);
+  transition: background var(--t-base), color var(--t-base);
+  flex-shrink: 0;
+}
+.hamburger:hover {
+  background: var(--bg-hover);
+  color: var(--teal);
+}
+
+/* ── Shared page wrapper ───────────────────────────────────── */
+.page-content {
+  padding: 28px 32px 40px;
+  flex: 1;
+  animation: fadeIn 0.18s ease;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.page-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 600px;
+}
+
+/* ── Shared card primitive ─────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Shared section heading ────────────────────────────────── */
+.section-heading {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+.section-note {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+/* ── Disclaimer / notice strip ─────────────────────────────── */
+.notice-strip {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 9px 14px;
+  border-radius: var(--r-md);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.notice-strip svg { flex-shrink: 0; margin-top: 1px; }
+.notice-strip.info {
+  background: var(--teal-dim);
+  border: 1px solid var(--teal-border);
+  color: var(--text-secondary);
+}
+.notice-strip.info svg { color: var(--teal); }
+.notice-strip.warning-notice {
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
+  color: var(--text-secondary);
+}
+.notice-strip.warning-notice svg { color: var(--warning); }
+.notice-strip.muted {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.notice-strip.muted svg { color: var(--text-muted); }
+
+/* ── Mobile breakpoints ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .mobile-header {
+    display: flex;
+  }
+
+  .sidebar-overlay.open {
+    display: block;
+  }
+
+  .page-content {
+    padding: 20px 16px 32px;
+  }
+}
